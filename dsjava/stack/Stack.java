@@ -53,6 +53,6 @@ public class Stack<T> extends SinglyLinkedList<T> implements StackI<T>{
 
   @Override
   public String toString(){
-    return "Stack: \n" + super.toString();
+    return super.toString();
   }
 }

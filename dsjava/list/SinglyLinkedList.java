@@ -246,7 +246,7 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
   @Override
   public String toString(){
     if(isEmpty())
-      return "List is empty";
+      return "empty";
     else{
       Node<T> currentNode = this.head;
       String list = "\n";

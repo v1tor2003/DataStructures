@@ -1,4 +1,4 @@
-package dsjava;
+package allQuestions.byUsingStack;
 
 import java.util.Random;
 import dsjava.stack.Stack;
