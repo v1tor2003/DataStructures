@@ -26,6 +26,6 @@ public class Queue<T> extends SinglyLinkedList<T> implements QueueI<T>{
     if(isEmpty())
       return "Queue Is Empty"; 
 
-    return "Queue: \n" + super.toString();
+    return super.toString();
   }
 }

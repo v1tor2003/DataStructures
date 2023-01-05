@@ -43,24 +43,6 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
     return currentNode;
   }
 
-  public String showListWithIndex(){
-    if(isEmpty())
-      return "List is empty";
-    else{
-      Node<T> currentNode = this.head;
-      String list = "\n";
-      int i = 0;
-      while(currentNode.next != null){
-        list += String.format("%d - %s\n\n", i, currentNode);
-        i++;
-        //list += i + currentNode + "\n";
-        currentNode = currentNode.next;
-      }
-      list += String.format("%d - %s\n\n", i, currentNode);
-      return list;
-    }
-  }
-
   @Override
   public int size(){
     return this.size;
@@ -91,7 +73,6 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
 
   @Override
   public void insertAtStart(T data) {
-    
     Node<T> newNode = createNode(data);
     
     if(isEmpty()){
@@ -107,7 +88,6 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
 
   @Override
   public void insertAfter(T reference, T data) {
-    
     Node<T> newNode = createNode(data);
     Node<T> placeToInsert;  
     
@@ -123,7 +103,6 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
 
   @Override
   public void insertAtEnd(T data) {
-    
     Node<T> newNode = createNode(data);
     
     if(isEmpty()){
@@ -249,12 +228,12 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
       return "empty";
     else{
       Node<T> currentNode = this.head;
-      String list = "\n";
+      String list = "[";
       while(currentNode.next != null){
-        list += String.format("%s\n", currentNode);
+        list += String.format("%s ", currentNode);
         currentNode = currentNode.next;
       }
-      list += String.format("%s\n", currentNode);
+      list += String.format("%s]", currentNode);
       return list;
     }
   }
