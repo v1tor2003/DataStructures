@@ -1,5 +1,4 @@
-
-
+import dsjava.tree.Heap;
 import dsjava.tree.TreeBS;
 
 public class Main2 {
@@ -23,7 +22,12 @@ public class Main2 {
     tree.postOrderTraversal();
     System.out.println("\n" + tree.height());
     System.out.println("\n" + tree.isComplete());
-    System.out.println("\n" + tree.isHeap(tree.getRoot()));
+    System.out.println("\n" + tree.isHeap());
+    System.out.println("\n" + Heap.isHeap(tree.getRoot()));
 
+    Character[] test = {'F', 'T', 'R', 'A'};
+    Heap.heapSort(test, "teste",test.length);
+    System.out.println(test);
   }
+
 }

@@ -66,8 +66,8 @@ public class TreeBS<T extends Comparable<T>> {
     this.root = null;
   }
 
-  public TreeBS(T value) {
-    insertBST(this.root, value);
+  public TreeBS(Node<T> root) {
+    this.root = root;
   }
 
   public Node<T> getRoot() {
@@ -188,7 +188,11 @@ public class TreeBS<T extends Comparable<T>> {
     return Math.max(height(root.getLeft()), height(root.getRight())) + 1;
   }
 
-  public int isHeap(Node<T> root){
+  public int isHeap(){
+    return isHeap(root);
+  }
+
+  private int isHeap(Node<T> root){
     if(isComplete(root))
       if(isMaxHeap(root)) return 1;
       else if(isMinHeap(root)) return -1;
