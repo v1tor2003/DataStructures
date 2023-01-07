@@ -10,7 +10,7 @@ public class SortingProgram {
       new Person("F", 1, 5),
       new Person("V", 5, 8)
     };   
-
+    // [Sorting] Question 1 - sort an estored array, given key and sort method
     SortingMenu menu = new SortingMenu(people);
     menu.run();
   } 

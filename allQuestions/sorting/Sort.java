@@ -5,7 +5,8 @@ import java.util.Comparator;
 import dsjava.tree.Heap;
 
 public class Sort {
-  // for some reason heapSort, sorts the array in desc order
+  // for some reason in heapSort, it sorts the array in desc order
+  // and for the grades places a element in a wrong position
   public static <T, K extends Comparator<T>> void heapSort(T[] array, K key){
     Heap.heapSort(array, key);
   }

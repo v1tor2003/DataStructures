@@ -18,9 +18,11 @@ public class TreeAndHeapProgram {
     tree.insertBST(2);
     tree.insertBST(3);
     tree.insertBST(4);
-    System.out.print(tree.height());
-    System.out.print(Heap.isHeap(tree.getRoot()));
-    
+    // [Tree] Question 3 - calculate height of tree 
+    System.out.println(tree.height());
+    // [Heap] Question 6 - check if a given tree is a heap and its heap type
+    System.out.println(Heap.isHeap(tree.getRoot()));
+    // [Heap] Question 7 - heapify a given array, 1 for MIN and 2 for MAX
     System.out.println("To Max heap:");
     Heap.heapify(people, new NameComparator(), 2);
     for(Person person : people)

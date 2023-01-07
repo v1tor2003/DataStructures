@@ -9,7 +9,6 @@ public class RegistrationComparator implements Comparator<Person>{
     
     if(p1.getRegistration() < p2.getRegistration()) return -1;
     else if(p1.getRegistration() > p2.getRegistration()) return 1;
-
     return 0;
   }
 }
