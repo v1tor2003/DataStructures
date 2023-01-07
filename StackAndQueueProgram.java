@@ -3,7 +3,7 @@ import allQuestions.byUsingStack.DeckOfCards;
 import allQuestions.byUsingStack.ExpressionValidator;
 import allQuestions.byUsingStack.ParkingLot;
 
-public class Main {
+public class StackAndQueueProgram {
   public static void main(String[] args) {
     // [Stack] Question 4 - Sort a deck of cards by using stacks
     DeckOfCards deckOfCards = new DeckOfCards();

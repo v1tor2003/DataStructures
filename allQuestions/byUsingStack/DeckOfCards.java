@@ -25,7 +25,9 @@ public class DeckOfCards {
   ){
     
       // I think there is a better solution
-    // By using an array to store the auxs stacks (but we can not create a generic type array in Java)
+    // By using an array to store the auxs stacks
+    // but we can not create a generic type array in Java
+    // (there is an unsafe way e should not be used (only if realy needed))
     // Would look like this
     /*
     partitionSize = calcule numbers based on the quantity of partitions for their sum be equal 52

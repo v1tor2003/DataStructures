@@ -4,65 +4,79 @@ import java.util.Comparator;
 import dsjava.tree.TreeBS.Node;
 
 public class Heap{
-  public static <T extends Comparator<T>> void heapify(T[] array, int n, boolean MAX){
-    if(MAX) maxHeapify(array, n);
-    else minHeapify(array, n); 
-  }
-  
-  public static <T extends Comparator<T>, K> void heapSort(T[] array, K key, int n){
-    heapify(array, n, true);
-    System.out.println(key);
-    for(int i = n; i >= 2; i--){
-      swap(array[1], array[i]);
-      n = n - 1;
-      maxHeapify(array, 1);
-    }
-  }
+  private static final int MIN = 1;
+  private static final int MAX = 2;
 
-  public static <T extends Comparator<T>> void buildMaxHeap(T[] array, int n){
-    for(int i = Math.floorDiv(n, 2); i >=1; i--)
-      maxHeapify(array, i);
-  }
-
-  private static <T extends Comparator<T>> void maxHeapify(T[] array, int i){
-    T largest = null;
-    int largestPositon;
-
-    if(left(i) <= array.length && ){//array[left(i)].compareTo(array[i]) > 0){
-      largest = array[left(i)];
-      largestPositon = left(i);
-    }
+  public static <T, K extends Comparator<T>> void heapify(T[] array, K key, int heapType){
+    if(heapType == MAX) buildMaxHeap(array, key);
+    else if(heapType == MIN) buildMinHeap(array, key);
     else{
-      largest = array[i];
-      largestPositon = i;
-    }
-
-    if(right(i) <= array.length && )
-      largest = array[right(i)];
-      largestPositon = right(i);
-    if(largestPositon != i){
-      swap(array[i], array[largestPositon]);
-      maxHeapify(array, largestPositon);
+      System.out.println("Invalid Heap type, choose (1-MIN, 2-MAX).");
+      return;
     }
   }
 
-  private static <T extends Comparator<T>> void minHeapify(T[] array, int i){
-
+  public static <T, K extends Comparator<T>> void heapSort(T[] array, K key){
+    heapify(array, key, 2);
+    
+    for(int i = array.length - 1; i > 0; --i){
+      swap(array, 0, i);
+      maxHeapify(array, key, 0);
+    }
   }
 
-  private static <T> void swap(T index1, T index2) {
-    T tmp = index1;
-    index1 = index2;
-    index2 = tmp;
+  public static <T, K extends Comparator<T>> void buildMaxHeap(T[] array, K key){
+    for(int i = Math.floorDiv(array.length, 2) - 1; i >= 0; i--)
+      maxHeapify(array, key, i);
   }
 
-  private static int left(int i){
-    return 2*i + 1;
+  public static <T, K extends Comparator<T>> void buildMinHeap(T[] array, K key){
+    for(int i = Math.floorDiv(array.length, 2) - 1; i >= 0; i--)
+      minHeapify(array, key, i);
   }
 
-  private static int right(int i){
-    return 2*i + 2;
+  private static <T, K extends Comparator<T>> void maxHeapify(T[] array, K key, int i){
+    int root = i;
+    int left = 2*i + 1;
+    int right = 2*i + 2;
+    
+    if(left < array.length && key.compare(array[left], array[root]) > 0){
+      root = left;
+    }
+
+    if(right < array.length && key.compare(array[right], array[root]) > 0){
+      root = right;
+    }
+    if(root != i){
+      swap(array, i, root);
+      maxHeapify(array, key, root);
+    }
   }
+
+  private static <T, K extends Comparator<T>> void minHeapify(T[] array, K key, int i){
+    int root = i;
+    int left = 2*i + 1;
+    int right = 2*i + 2;
+    
+    if(left < array.length && key.compare(array[left], array[root]) <= 0){
+      root = left;
+    }
+
+    if(right < array.length && key.compare(array[right], array[root]) <= 0){
+      root = right;
+    }
+    if(root != i){
+      swap(array, i, root);
+      minHeapify(array, key, root);
+    }
+  }
+
+  private static <T> void swap(T[] array, int index1, int index2) {
+    T tmp = array[index1];
+    array[index1] = array[index2];
+    array[index2] = tmp;
+  }
+
   public static <T extends Comparable<T>> int isHeap(Node<T> root){
     TreeBS<T> tree = new TreeBS<>(root);
     return tree.isHeap();
